@@ -1,14 +1,12 @@
-package com.aotter.trek.android.kotlin.demo
+package com.aotter.trek.demo
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.aotter.trek.android.kotlin.demo.trek.banner_ad.TrekBannerAdScrollPageActivity
-import com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity
-import com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdScrollPageActivity
-import com.aotter.trek.android.kotlin.demo.trek.supr_ad.TrekMediaRecyclerViewPageActivity
-import com.aotter.trek.android.kotlin.demo.trek.supr_ad.TrekMediaScrollPageActivity
 import com.aotter.trek.demo.databinding.ActivityMainBinding
+import com.aotter.trek.demo.trek.banner_ad.TrekBannerAdScrollPageActivity
+import com.aotter.trek.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity
+import com.aotter.trek.demo.trek.native_ad.TrekNativeAdScrollPageActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,18 +37,6 @@ class MainActivity : AppCompatActivity() {
         viewBinding.trekNativeAdScrollPageBtn.setOnClickListener {
             val intent = Intent()
             intent.setClass(this, TrekNativeAdScrollPageActivity::class.java)
-            startActivity(intent)
-        }
-
-        viewBinding.trekMediaAdScrollPageAdBtn.setOnClickListener {
-            val intent = Intent()
-            intent.setClass(this, TrekMediaScrollPageActivity::class.java)
-            startActivity(intent)
-        }
-
-        viewBinding.trekMediaAdRecyclerViewAdBtn.setOnClickListener {
-            val intent = Intent()
-            intent.setClass(this, TrekMediaRecyclerViewPageActivity::class.java)
             startActivity(intent)
         }
 

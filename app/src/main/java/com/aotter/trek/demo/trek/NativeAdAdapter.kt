@@ -1,22 +1,22 @@
-package com.aotter.trek.android.kotlin.demo.trek
+package com.aotter.trek.demo.trek
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.aotter.net.trek.ads.TrekMediaView
+import com.aotter.net.trek.ads.TrekNativeAdView
 import com.aotter.trek.demo.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
-class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
+class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
 
-    private var list = mutableListOf<LocalSuprAdData>()
+    private var list = mutableListOf<LocalNativeAdData>()
 
-    fun update(list: MutableList<LocalSuprAdData>) {
+    fun update(list: MutableList<LocalNativeAdData>) {
 
         this.list = list
 
@@ -26,7 +26,7 @@ class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
 
-        return list[position].trekAd?.let {
+        return list[position].trekNativeAd?.let {
             0
         } ?: kotlin.run {
             1
@@ -40,7 +40,7 @@ class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
             0 -> {
 
                 val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_supr_ad, parent, false)
+                    .inflate(R.layout.item_native_ad, parent, false)
 
                 ViewHolder(view)
 
@@ -66,21 +66,38 @@ class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        private val advertiser = itemView.findViewById<TextView>(R.id.advertiser)
+
         private val adTitle = itemView.findViewById<TextView>(R.id.adTitle)
 
         private val adImg = itemView.findViewById<ImageView>(R.id.adImg)
 
-        private val container = itemView.findViewById<ConstraintLayout>(R.id.container)
+        private val trekNativeAdView =
+            itemView.findViewById<TrekNativeAdView>(R.id.trekNativeAdView)
 
-        private val trekMediaView3 = itemView.findViewById<TrekMediaView>(R.id.trekMediaView3)
+        private val trekMediaView = itemView.findViewById<TrekMediaView>(R.id.trekMediaView2)
 
-        fun bind(item: LocalSuprAdData) {
+        fun bind(item: LocalNativeAdData) {
 
-            item.trekAd?.let { trek ->
-                item.adData?.let { adData ->
-                    trek.registerSuprAd(container, trekMediaView3, adData)
-                }
+
+            item.trekNativeAd?.let { trekNativeAd ->
+
+                advertiser.text = trekNativeAd.advertiserName
+
+                adTitle.text = trekNativeAd.title
+
+                Glide.with(itemView.context)
+                    .load(trekNativeAd.imgIconHd)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(adImg)
+
+                trekNativeAdView.setTrekMediaView(trekMediaView)
+
+                trekNativeAdView.setNativeAd(trekNativeAd)
+
             } ?: kotlin.run {
+
+                advertiser.text = item.advertiser
 
                 adTitle.text = item.title
 
@@ -90,6 +107,7 @@ class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
                     .into(adImg)
 
             }
+
 
         }
 
