@@ -44,7 +44,7 @@ android {
 
 dependencies {
 
-    implementation 'com.aotter.net:trek-sdk-android-kotlin:4.7.8_beta'
+    implementation 'com.aotter.net:trek-sdk-android-kotlin:5.1.0_beta'
 
     //multidex
     implementation "androidx.multidex:multidex:2.0.1"
