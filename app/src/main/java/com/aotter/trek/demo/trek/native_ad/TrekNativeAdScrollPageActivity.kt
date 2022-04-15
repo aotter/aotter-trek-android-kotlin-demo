@@ -82,7 +82,7 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
     private fun getAd() {
 
-        trekAdLoader = TrekAdLoader()
+        trekAdLoader = TrekAdLoader
             .Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
             .withAdListener(object : TrekAdListener {
                 override fun onAdFailedToLoad(message: String) {
@@ -125,7 +125,11 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             })
             .build()
 
-        trekAdRequest = TrekAdRequest().Builder().setCategory("NEWS").build()
+        trekAdRequest = TrekAdRequest.Builder()
+            .setCategory("NEWS")
+            .setContentUrl("https://agirls.aotter.net/")
+            .setContentTitle("電獺少女")
+            .build()
 
         trekAdRequest?.let {
             trekAdLoader?.loadAd(it)
@@ -135,7 +139,7 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
     private fun getAd2() {
 
-        trekAdLoader2 = TrekAdLoader()
+        trekAdLoader2 = TrekAdLoader
             .Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
             .withAdListener(object : TrekAdListener {
                 override fun onAdFailedToLoad(message: String) {
@@ -178,7 +182,11 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             })
             .build()
 
-        trekAdRequest2 = TrekAdRequest().Builder().setCategory("NEWS").build()
+        trekAdRequest2 = TrekAdRequest.Builder()
+            .setCategory("NEWS")
+            .setContentUrl("https://agirls.aotter.net/")
+            .setContentTitle("電獺少女")
+            .build()
 
         trekAdRequest2?.let {
             trekAdLoader2?.loadAd(it)
@@ -188,7 +196,7 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
     private fun getAd3() {
 
-        trekAdLoader3 = TrekAdLoader()
+        trekAdLoader3 = TrekAdLoader
             .Builder(this, "81608f91-8b2b-4f8f-86a1-539a1959f836")
             .withAdListener(object : TrekAdListener {
                 override fun onAdFailedToLoad(message: String) {
@@ -230,7 +238,11 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             })
             .build()
 
-        trekAdRequest3 = TrekAdRequest().Builder().setCategory("NEWS").build()
+        trekAdRequest3 = TrekAdRequest.Builder()
+            .setCategory("NEWS")
+            .setContentUrl("https://agirls.aotter.net/")
+            .setContentTitle("電獺少女")
+            .build()
 
         trekAdRequest3?.let {
             trekAdLoader3?.loadAd(it)

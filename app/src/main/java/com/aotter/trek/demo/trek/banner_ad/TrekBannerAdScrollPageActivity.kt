@@ -81,7 +81,11 @@ class TrekBannerAdScrollPageActivity : AppCompatActivity() {
             }
         })
 
-        trekAdRequest = TrekAdRequest().Builder().setCategory("NEWS").build()
+        trekAdRequest = TrekAdRequest.Builder()
+            .setCategory("NEWS")
+            .setContentUrl("https://agirls.aotter.net/")
+            .setContentTitle("電獺少女")
+            .build()
 
         trekAdRequest?.let {
             viewBinding.trekBannerAdView.loadAd(it)
