@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.aotter.net.dto.trek.response.TrekNativeAd
-import com.aotter.net.trek.TrekAds
 import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdRequest
 import com.aotter.trek.demo.databinding.ActivityBannerAdScrollPageBinding
@@ -21,11 +20,6 @@ class TrekBannerAdScrollPageActivity : AppCompatActivity() {
         viewBinding = ActivityBannerAdScrollPageBinding.inflate(layoutInflater)
 
         setContentView(viewBinding.root)
-
-        TrekAds.initialize(
-            this@TrekBannerAdScrollPageActivity,
-            "DNgNhOwfbUkOqcQFI+uD"
-        ) {}
 
         initView()
 

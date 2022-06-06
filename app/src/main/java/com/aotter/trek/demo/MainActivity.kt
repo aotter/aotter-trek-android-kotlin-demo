@@ -3,6 +3,7 @@ package com.aotter.trek.demo
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.aotter.net.trek.TrekAds
 import com.aotter.trek.demo.databinding.ActivityMainBinding
 import com.aotter.trek.demo.trek.banner_ad.TrekBannerAdScrollPageActivity
 import com.aotter.trek.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity
@@ -18,6 +19,11 @@ class MainActivity : AppCompatActivity() {
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(viewBinding.root)
+
+        TrekAds.initialize(
+            this,
+            "DNgNhOwfbUkOqcQFI+uD"
+        ) {}
 
         initView()
 

@@ -87,7 +87,7 @@ class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
                 adTitle.text = trekNativeAd.title
 
                 Glide.with(itemView.context)
-                    .load(trekNativeAd.imgIconHd)
+                    .load(trekNativeAd.imgIconHd.drawable)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(adImg)
 
