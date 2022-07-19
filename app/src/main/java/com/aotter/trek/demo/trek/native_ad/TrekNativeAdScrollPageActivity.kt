@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.aotter.net.dto.Entity
+import com.aotter.net.dto.TrekJsonObject
 import com.aotter.net.dto.User
 import com.aotter.net.dto.trek.response.TrekNativeAd
 import com.aotter.net.trek.TrekDataKey
@@ -15,9 +16,7 @@ import com.aotter.net.trek.sealed.EntityType
 import com.aotter.net.trek.tracker.Tracker
 import com.aotter.trek.demo.databinding.ActivityNativeAdScrollPageBinding
 import com.bumptech.glide.Glide
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.put
-
+import org.json.JSONObject
 
 class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
@@ -34,6 +33,8 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
     private var trekAdLoader3: TrekAdLoader? = null
 
     private var trekAdRequest3: TrekAdRequest? = null
+
+    private val tracker = Tracker(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -246,17 +247,15 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
     private fun initTracker() {
 
-        val tracker = Tracker(this)
+        val jsonObject = TrekJsonObject()
 
-        val jsonObject = buildJsonObject {
-            put(TrekDataKey.REFERENCE, "disp")
-            put(TrekDataKey.PUBLISHED_DATE, 1438090882490L)
-            put(TrekDataKey.IMG, "http://pnn.aotter.net/Media/show/cna.jpg")
-            put(TrekDataKey.AUTHOR, "skybear")
-            put(TrekDataKey.ADDRESS, "105台北市松山區南京東路四段2號")
-            put(TrekDataKey.LAT, 25.0463684)
-            put(TrekDataKey.LNG, 121.5501565)
-        }
+        jsonObject.put(TrekDataKey.REFERENCE, "disp")
+        jsonObject.put(TrekDataKey.PUBLISHED_DATE, 1438090882490L)
+        jsonObject.put(TrekDataKey.IMG, "http://pnn.aotter.net/Media/show/cna.jpg")
+        jsonObject.put(TrekDataKey.AUTHOR, "skybear")
+        jsonObject.put(TrekDataKey.ADDRESS, "105台北市松山區南京東路四段2號")
+        jsonObject.put(TrekDataKey.LAT, 25.0463684)
+        jsonObject.put(TrekDataKey.LNG, 121.5501565)
 
         val entity = Entity(
                 "anthony", "anthony", EntityType.GAME.type, "anthony", listOf("News"),
@@ -264,11 +263,11 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
                         "News",
                         "News_domestic"
                 ),
-                jsonObject,
+            jsonObject,
         )
 
         val user = User("1991/10/10", "a1111111@gmail.com", "", "M", "0900000000",
-                buildJsonObject { })
+            TrekJsonObject())
 
         tracker
                 .timeSpan(1)

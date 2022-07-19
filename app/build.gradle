@@ -37,17 +37,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 }
 
 dependencies {
 
-    implementation 'com.aotter.net:trek-sdk-android-kotlin:5.2.4_beta'
+    implementation 'com.aotter.net:trek-sdk-android-kotlin:5.3.1_beta'
 
     //multidex
     implementation "androidx.multidex:multidex:2.0.1"
